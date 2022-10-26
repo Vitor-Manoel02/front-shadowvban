@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function postAcessToken(token){
     try{
-        const { data } = await axios.get("https://6bcb-200-9-19-174.sa.ngrok.io", {
+        const { data } = await axios.get("https://6bcb-200-9-19-174.sa.ngrok.io/shadowbanverification", {
           headers: {
             Authorization: token,
             "ngrok-skip-browser-warning": 1
