@@ -5,6 +5,7 @@ export default async function postAcessToken(token){
         const { data } = await axios.get("https://6bcb-200-9-19-174.sa.ngrok.io", {
           headers: {
             Authorization: token,
+            "ngrok-skip-browser-warning": 1
           }
         });
         return {
