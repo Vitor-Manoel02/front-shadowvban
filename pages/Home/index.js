@@ -2,7 +2,8 @@
 import InstagramLogin from "react-instagram-login";
 import { useEffect, useState } from "react";
 
-const App = () => {
+
+export default function App(){
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState({});
 
@@ -21,21 +22,20 @@ const App = () => {
   return (
     <div className="App">
       {isLoggedIn === true ? (
-        <div>
-          <h1>Olá, você está logado!</h1>
-          <h2>Seu token é: {token}</h2>
-        </div>
+        <></>
       ) : (
-        <InstagramLogin
-          clientId="1296989504384057"
-          buttonText="Login"
-          onSuccess={responseInstagram}
-          onFailure={responseInstagram}
-          scope="user_profile,user_media"
-        />
+        <div>
+          <h1>Minhas conta está com shadowban?</h1>
+          <h2>Descubra se o alcance do seu perfil está sendo prejudicado por conta do Shadowban.</h2>
+          <InstagramLogin
+            clientId="1296989504384057"
+            buttonText="Login"
+            onSuccess={responseInstagram}
+            onFailure={responseInstagram}
+            scope="user_profile,user_media"
+          />
+        </div>
       )}
     </div>
   );
 };
-
-export default App;
