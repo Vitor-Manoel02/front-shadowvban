@@ -8,7 +8,6 @@ import postAcessToken from "../../src/api/accessUsers";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState({});
   const [verify, getVerify] = useState(false);
   const [sniper, getSniper] = useState("");
 
@@ -16,14 +15,13 @@ export default function App() {
     if (!response.error_type) {
       setIsLoggedIn(true);
       const accessToken = response;
-      setToken(accessToken);
       console.log("Você está logado, seu token é: ", accessToken);
-      getUser();
+      getUser(accessToken);
     }
   };
 
-  async function getUser() {
-    const userData = await postAcessToken(token);
+  async function getUser(accessToken) {
+    const userData = await postAcessToken(accessToken);
     localStorage.setItem('response',JSON.stringify(userData));
     console.log("resultado:". userData);
   }
