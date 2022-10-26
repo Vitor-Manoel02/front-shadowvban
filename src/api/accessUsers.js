@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function postAcessToken(token){
     try{
-        const { data } = await axios.get("https://481d-200-9-19-174.sa.ngrok.io/shadowbanverification", {
+        const { data } = await axios.get("https://481d-200-9-19-174.sa.ngrok.io", {
           headers: {
             Authorization: token,
           }

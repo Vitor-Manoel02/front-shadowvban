@@ -16,7 +16,6 @@ export default function App() {
     if (!response.error_type) {
       setIsLoggedIn(true);
       const accessToken = accessToken;
-      localStorage.setItem("accessToken", JSON.stringify(accessToken));
       setToken(accessToken);
       console.log("Você está logado, seu token é: ", accessToken);
       getUser();
