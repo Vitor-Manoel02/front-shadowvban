@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export default async function postAcessToken(token){
+export default async function postAcessToken(Token){
     try{
         const { data } = await axios.get("https://6bcb-200-9-19-174.sa.ngrok.io/shadowbanverification", {
           headers: {
-            token: token,
+            token: Token,
             "ngrok-skip-browser-warning": 1
           }
         });
