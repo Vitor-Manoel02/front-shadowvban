@@ -53,7 +53,7 @@ export default function App() {
               conta do Shadowban.
             </h2>
             <InstagramLogin
-              clientId="623283426120943"
+              clientId="5995761557122320"
               buttonText="Login"
               onSuccess={responseInstagram}
               onFailure={responseInstagram}
