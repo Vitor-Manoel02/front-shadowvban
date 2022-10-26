@@ -15,7 +15,7 @@ export default function App() {
   const responseInstagram = (response) => {
     if (!response.error_type) {
       setIsLoggedIn(true);
-      const accessToken = accessToken;
+      const accessToken = response;
       setToken(accessToken);
       console.log("Você está logado, seu token é: ", accessToken);
       getUser();
