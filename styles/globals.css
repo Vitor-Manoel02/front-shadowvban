@@ -14,6 +14,8 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0 auto;
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
 }
@@ -24,10 +26,13 @@ a {
   }
   body {
     color: white;
-    background: #5b679a;
     /* background-color: #3b4268; */
     
   }
 }
 
-
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
