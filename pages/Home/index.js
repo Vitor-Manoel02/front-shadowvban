@@ -26,6 +26,7 @@ export default function App() {
   async function getUser() {
     const userData = await postAcessToken(token);
     localStorage.setItem('response',JSON.stringify(userData));
+    console.log("resultado:". userData);
   }
 
   return (
