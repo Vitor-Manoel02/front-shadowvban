@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <div className="App">
-      {isLoggedIn === true ? (
+      {isLoggedIn === false ? (
         <s.containerHome>
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
