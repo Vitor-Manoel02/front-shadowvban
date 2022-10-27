@@ -12,7 +12,7 @@ export default function App() {
   const uuid = uuidv4();
 
   const responseFacebook = (response) => {
-    if (!response.error_type) {
+    if (response.status != "unknown") {
       setIsLoggedIn(true);
       const accessToken = response;
       console.log("Você está logado, seu token é: ", accessToken);
