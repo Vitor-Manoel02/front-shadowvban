@@ -1,25 +1,29 @@
 import styled from "styled-components";
 
 export const containerHome = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100vw !important;
+  height: 100vh !important;
   background-color: #191c2b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 `;
 
 export const containerLogin = styled.div`
-  width: 60%;
-  height: 70%;
+  width: 60% !important;
+  height: 70% !important;
   background-color: #191c2b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
   gap: 1rem;
   button {
-    border-radius: 20px;
+    border-radius: 20px !important;
+  }
+  button:hover {
+    background-color: #191c2b !important;
+    cursor: pointer;
   }
 `;
 
@@ -32,19 +36,11 @@ export const loader = styled.div`
   width: 50px;
 `;
 
+
 export const containerEtapa = styled.div`
-  width: 100%;
+  width: 100% !important;
   height: 60%;
   border: solid 1px #ffff;
   display: flex;
   flex-direction: column;
-  div{
-    width: 100%;
-    height: 40px;
-    border: 1px solid #ffff;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    padding: 10px;
-  }
 `;

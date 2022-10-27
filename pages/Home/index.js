@@ -1,15 +1,15 @@
-// import FacebookLogin from "react-facebook-login";
-import InstagramLogin from "react-instagram-login";
 import * as s from "../../styles/HomeStyles/index";
-import { IconName } from "react-icons/tfi";
-// import Sniper from "../../src/components/sniper";
 import { useEffect, useState } from "react";
 import postAcessToken from "../../src/api/accessUsers";
+import NotLogged from "../../src/components/notLogged";
+import EtapasAnalise from "../../src/components/etapasAnalise";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [verify, getVerify] = useState(false);
-  const [sniper, getSniper] = useState("");
+  const uuid = uuidv4();
 
   const responseInstagram = (response) => {
     if (!response.error_type) {
@@ -22,52 +22,48 @@ export default function App() {
 
   async function getUser(accessToken) {
     const userData = await postAcessToken(accessToken);
-    localStorage.setItem('response',JSON.stringify(userData));
-    console.log("resultado:". userData);
+    localStorage.setItem("response", JSON.stringify(userData));
+    console.log("resultado:".userData);
   }
+
+  // async function timeOut(){
+  //    = await setTimeout(()=>{
+
+  //   },[])
+  // }
+  const value = true;
 
   return (
     <div className="App">
-      {isLoggedIn === true ? (
+      {isLoggedIn === false ? (
         <s.containerHome>
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
             <figcaption>Isso pode demorar alguns segundos...</figcaption>
-
-            <s.loader></s.loader>
+            <s.loader />
             <s.containerEtapa>
-              <div>Conectando com sua conta</div>
-              <div>Buscando foto mais recente ultilizando hashtag</div>
-              <div>Analisando Shadowban</div>
+              <EtapasAnalise
+                id={uuid}
+                title="Verificando se o perfil existe"
+                sniper={value}
+              />
+              <EtapasAnalise
+                id={uuid}
+                title="Buscando foto mais recente ultilizando hashtag"
+                sniper={value}
+              />
+              <EtapasAnalise
+                id={uuid}
+                title="Analisando Shadowban..."
+                sniper={value}
+              />
             </s.containerEtapa>
           </s.containerLogin>
         </s.containerHome>
       ) : (
         <s.containerHome>
           <s.containerLogin>
-            <h1>Minhas conta está com shadowban?</h1>
-            <h2>
-              Descubra se o alcance do seu perfil está sendo prejudicado por
-              conta do Shadowban.
-            </h2>
-            <InstagramLogin
-              clientId="623283426120943"
-              buttonText="Login"
-              onSuccess={responseInstagram}
-              onFailure={responseInstagram}
-              scope="user_profile,user_media"
-            />
-            <div>
-              <h3>Como usar:</h3>
-              <ol>
-                <li>Faça login com sua conta empresarial do instagram.</li>
-                <li>
-                  Você precisa ter postado uma foto recente, usando hashtags.
-                </li>
-                <li>Verificamos se o perfil existe e atende aos requisitos.</li>
-                <li>Agora é só descobrir se você está com Shadowban ou não.</li>
-              </ol>
-            </div>
+            <NotLogged responseInstagram={responseInstagram} />
           </s.containerLogin>
         </s.containerHome>
       )}
