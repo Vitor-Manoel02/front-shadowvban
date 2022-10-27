@@ -4,7 +4,7 @@ import { BsCheck2All } from "react-icons/bs";
 export default function EtapasAnalise({ title, sniper }) {
   return (
     <s.containerLoader>
-      {sniper === true ? <BsCheck2All /> : <s.loader />}
+      {sniper === true ? <BsCheck2All fill="#09b109" /> : <s.loader/>}
       <h3>{title}</h3>
     </s.containerLoader>
   );

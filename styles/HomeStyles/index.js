@@ -36,7 +36,6 @@ export const loader = styled.div`
   width: 50px;
 `;
 
-
 export const containerEtapa = styled.div`
   width: 100% !important;
   height: 60%;
@@ -44,3 +43,10 @@ export const containerEtapa = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const containerResponse = styled.div`
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+`;
+//mudar a cor de um icone do react-icons

@@ -26,8 +26,6 @@ a {
   }
   body {
     color: white;
-    /* background-color: #3b4268; */
-    
   }
 }
 
@@ -36,3 +34,4 @@ a {
     transform: rotate(1turn);
   }
 }
+
