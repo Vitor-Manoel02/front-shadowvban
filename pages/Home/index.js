@@ -11,7 +11,7 @@ export default function App() {
   const [verify, getVerify] = useState(false);
   const uuid = uuidv4();
 
-  const responseInstagram = (response) => {
+  const responseFacebook = (response) => {
     if (!response.error_type) {
       setIsLoggedIn(true);
       const accessToken = response;
@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <div className="App">
-      {isLoggedIn === false ? (
+      {isLoggedIn === true ? (
         <s.containerHome>
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
@@ -63,7 +63,7 @@ export default function App() {
       ) : (
         <s.containerHome>
           <s.containerLogin>
-            <NotLogged responseInstagram={responseInstagram} />
+            <NotLogged responseFacebook={responseFacebook} />
           </s.containerLogin>
         </s.containerHome>
       )}
