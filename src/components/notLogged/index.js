@@ -13,6 +13,7 @@ export default function NotLogged({responseFacebook}) {
              autoLoad={true}
              fields="name,email,picture"
              callback={responseFacebook}
+             version="v15.0"
             />
             <div>
               <h3>Como usar:</h3>
