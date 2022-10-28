@@ -13,7 +13,8 @@ export default function App() {
   const [user, getUser] = useState([]);
   const [step, setStep] = useState(0);
   const [verify, getVerify] = useState(false);
-  const [shadowBan, getShadowBan] = useState(null);
+  const [shadowBan, getShadowBan] = useState();
+  const [showResult, setShowResult] = useState(false);
   const uuid = uuidv4();
 
   const responseFacebook = (response) => {
@@ -28,7 +29,9 @@ export default function App() {
     if (userData.result.message === "Perfil sem shadowban!") {
       setStep(1);
       getShadowBan(false);
+      setShowResult(true);
     }
+
   }
 
   console.log("Usuário", user);
@@ -40,7 +43,7 @@ export default function App() {
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
             <figcaption>Isso pode demorar alguns segundos...</figcaption>
-            {verify === false ? (
+            {showResult === false ? (
               <s.loader />
             ) : (
               <BsCheck2All fill="#09b109" size={36} />
@@ -61,7 +64,17 @@ export default function App() {
                 title="Analisando Shadowban..."
                 sniper={step >= 1}
               />
-              {/* {shadowBan === true ? <ShadowBanTrue /> : <ShadowBanFalse />} */}
+              {
+                showResult === true ? (
+                  shadowBan === true ? (
+                    <ShadowBanTrue />
+                  ) : (
+                    <ShadowBanFalse />
+                  )
+                ) : (
+                  <></>
+                )
+              }
             </s.containerEtapa>
           </s.containerLogin>
         </s.containerHome>
