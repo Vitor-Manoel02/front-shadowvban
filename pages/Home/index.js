@@ -20,6 +20,7 @@ export default function App() {
       setIsLoggedIn(true);
       response.hashtag = true;
       getUsers(response.accessToken);
+      console.log(response.accessToken);
     }
   };
 
@@ -47,7 +48,6 @@ export default function App() {
     console.log("resultado:",userData);
   }
 
-  const value = false;
 
   return (
     <div className="App">
