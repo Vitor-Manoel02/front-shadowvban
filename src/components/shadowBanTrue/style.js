@@ -8,4 +8,5 @@ export const containerResult = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 6rem;
 `;

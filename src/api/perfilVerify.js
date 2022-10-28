@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export default async function postAcessToken(Token){
+export default async function perfilVerify(Token){
     try{
-        const { data } = await axios.get("https://79a6-200-9-19-174.sa.ngrok.io/shadowbanverification", {
+        const { data } = await axios.get("https://ac5b-200-9-19-174.sa.ngrok.io/pageandprofileverification", {
           headers: {
             token: Token,
             "ngrok-skip-browser-warning": 1

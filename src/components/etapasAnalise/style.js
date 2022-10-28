@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const containerLoader = styled.div`
   width: 100%;
-  height: 60px;
+  height: auto;
   display: flex;
+  padding: 20px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   border: 1px solid #ffff;
   gap: 1rem;
 `;

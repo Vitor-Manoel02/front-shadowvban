@@ -1,6 +1,8 @@
-import * as s from "../../styles/HomeStyles/index";
+import * as s from "../../styles/Home/index";
 import { useEffect, useState } from "react";
-import postAcessToken from "../../src/api/accessUsers";
+import ShadowBanVerify from "../../src/api/ShadowBanVerify";
+import searchHashtag from "../../src/api/searchHashtag";
+import perfilVerify from "../../src/api/perfilVerify";
 import NotLogged from "../../src/components/notLogged";
 import EtapasAnalise from "../../src/components/etapasAnalise";
 import { v4 as uuidv4 } from "uuid";
@@ -21,17 +23,27 @@ export default function App() {
     if (response.status != "unknown") {
       setIsLoggedIn(true);
       getUsers(response.accessToken);
+      console.log(response.accessToken);
     }
   };
 
   async function getUsers(accessToken) {
-    const userData = await postAcessToken(accessToken);
-    if (userData.result.message === "Perfil sem shadowban!") {
+    const perfil = await perfilVerify(accessToken);
+    if (
+      perfil.result.message === "Conexão com Facebook e Instagram realizado."
+    ) {
       setStep(1);
-      getShadowBan(false);
-      setShowResult(true);
+      const searchHashtags = await searchHashtag(accessToken);
+      if (searchHashtags.result.message === "Critérios de análise atendidos!") {
+        setStep(2);
+        const ShadowBan = await ShadowBanVerify(accessToken);
+        if (ShadowBan.result.message === "Perfil sem shadowban!") {
+          setStep(3);
+          getShadowBan(false);
+          setShowResult(true);
+        }
+      }
     }
-
   }
 
   console.log("Usuário", user);
@@ -52,7 +64,7 @@ export default function App() {
               <EtapasAnalise
                 id={uuid}
                 title="Verificando se o perfil existe"
-                sniper={step >= 3}
+                sniper={step >= 1}
               />
               <EtapasAnalise
                 id={uuid}
@@ -62,19 +74,17 @@ export default function App() {
               <EtapasAnalise
                 id={uuid}
                 title="Analisando Shadowban..."
-                sniper={step >= 1}
+                sniper={step >= 3}
               />
-              {
-                showResult === true ? (
-                  shadowBan === true ? (
-                    <ShadowBanTrue />
-                  ) : (
-                    <ShadowBanFalse />
-                  )
+              {showResult === true ? (
+                shadowBan === true ? (
+                  <ShadowBanTrue />
                 ) : (
-                  <></>
+                  <ShadowBanFalse />
                 )
-              }
+              ) : (
+                <s.containerResult></s.containerResult>
+              )}
             </s.containerEtapa>
           </s.containerLogin>
         </s.containerHome>

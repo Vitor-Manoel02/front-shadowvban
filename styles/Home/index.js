@@ -38,10 +38,11 @@ export const loader = styled.div`
 
 export const containerEtapa = styled.div`
   width: 100% !important;
-  height: 60%;
+  height: auto;
   border: solid 1px #ffff;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 
 `;
 
@@ -54,4 +55,11 @@ export const containerResponse = styled.div`
   align-items: center;
   margin-top: 35px;
 `;
-//mudar a cor de um icone do react-icons
+
+export const containerResult = styled.div`
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  padding: 6rem;
+`;
+
