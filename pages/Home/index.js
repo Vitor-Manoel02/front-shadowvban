@@ -12,6 +12,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, getUser] = useState([]);
   const [step, setStep] = useState(0);
+  const [verify,getVerify] = useState(false)
   const [shadowBan, getShadowBan] = useState(null);
   const uuid = uuidv4();
 
@@ -27,16 +28,18 @@ export default function App() {
   async function getUsers(accessToken) {
     const userData = await postAcessToken(accessToken);
     localStorage.setItem("response", JSON.stringify(userData));
-    console.log("resultado:", userData);
-    getUser(userData);
-  }
+    console.log("resultado:",userData);
+    getUser(userData)
+  };
 
-  useEffect(() => {
-    if (user.result.message === "Perfil sem shadowban!") {
+  useEffect(()=>{
+    if(user.result.message === "Perfil sem shadowban!"){
+      getVerify(true)
       setStep(3);
-      getShadowBan(false);
+      getShadowBan(false)
     }
-  }, [user]);
+  },[user])
+
 
   return (
     <div className="App">
@@ -45,10 +48,10 @@ export default function App() {
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
             <figcaption>Isso pode demorar alguns segundos...</figcaption>
-            {!shadowBan ? (
-              <BsCheck2All fill="#09b109" size={36} />
-            ) : (
+            {verify === false ? (
               <s.loader />
+            ) : (
+              <BsCheck2All fill="#09b109" size={36} />
             )}
             <s.containerEtapa>
               <EtapasAnalise
