@@ -12,7 +12,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, getUser] = useState([]);
   const [step, setStep] = useState(0);
-  const [finaly, setFinaly] = useState(false);
+  const [shadowBan, getShadowBan] = useState(null);
   const uuid = uuidv4();
 
   const responseFacebook = (response) => {
@@ -24,30 +24,19 @@ export default function App() {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (user.name) {
-        setStep(1);
-        setTimeout(() => {
-          if (user.hashtag) {
-            setStep(2);
-            setTimeout(() => {
-              setStep(3);
-              setFinaly(true);
-              user.shadowBan = false;
-            }, [2000]);
-          }
-        }, [2000]);
-      }
-    }, [2000]);
-  }, [user]);
-
   async function getUsers(accessToken) {
     const userData = await postAcessToken(accessToken);
     localStorage.setItem("response", JSON.stringify(userData));
-    console.log("resultado:",userData);
+    console.log("resultado:", userData);
+    getUser(userData);
   }
 
+  useEffect(() => {
+    if (user.result.message === "Perfil sem shadowban!") {
+      setStep(3);
+      getShadowBan(false);
+    }
+  }, [user]);
 
   return (
     <div className="App">
@@ -56,10 +45,10 @@ export default function App() {
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
             <figcaption>Isso pode demorar alguns segundos...</figcaption>
-            {finaly === false ? (
-              <s.loader />
-            ) : (
+            {!shadowBan ? (
               <BsCheck2All fill="#09b109" size={36} />
+            ) : (
+              <s.loader />
             )}
             <s.containerEtapa>
               <EtapasAnalise
@@ -77,7 +66,7 @@ export default function App() {
                 title="Analisando Shadowban..."
                 sniper={step >= 3}
               />
-              {user.shadowBan === true ? <ShadowBanTrue /> : <ShadowBanFalse />}
+              {!shadowBan === true ? <ShadowBanTrue /> : <ShadowBanFalse />}
             </s.containerEtapa>
           </s.containerLogin>
         </s.containerHome>
