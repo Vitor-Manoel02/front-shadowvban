@@ -33,14 +33,8 @@ export default function App() {
   };
 
   useEffect(()=>{
-    const data = localStorage.getItem("response") || [];
-    JSON.parse(data);
-    if(data.result.message === "Perfil sem shadowban!"){
-      getVerify(true)
-      setStep(3);
-      getShadowBan(false)
-    }
-  },[])
+    setStep(3);
+  },[user])
 
 
   return (
