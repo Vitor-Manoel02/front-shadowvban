@@ -1,6 +1,6 @@
 import * as s from "../../styles/HomeStyles/index";
 import { useEffect, useState } from "react";
-// import postAcessToken from "../../src/api/accessUsers";
+import postAcessToken from "../../src/api/accessUsers";
 import NotLogged from "../../src/components/notLogged";
 import EtapasAnalise from "../../src/components/etapasAnalise";
 import { v4 as uuidv4 } from "uuid";
@@ -20,7 +20,7 @@ export default function App() {
       setIsLoggedIn(true);
       console.log("Você está logado, seu token é: ", response);
       response.hashtag = true;
-      getUser(response);
+      getUsers(response.accessToken);
     }
   };
 
@@ -42,17 +42,12 @@ export default function App() {
     }, [2000]);
   }, [user]);
 
-  // async function getUser(accessToken) {
-  //   const userData = await postAcessToken(accessToken);
-  //   localStorage.setItem("response", JSON.stringify(userData));
-  //   console.log("resultado:".userData);
-  // }
+  async function getUsers(accessToken) {
+    const userData = await postAcessToken(accessToken);
+    localStorage.setItem("response", JSON.stringify(userData));
+    console.log("resultado:".userData);
+  }
 
-  // async function timeOut(){
-  //    = await setTimeout(()=>{
-
-  //   },[])
-  // }
   const value = false;
 
   return (
