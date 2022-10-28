@@ -12,30 +12,26 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, getUser] = useState([]);
   const [step, setStep] = useState(0);
-  const [verify,getVerify] = useState(false)
+  const [verify, getVerify] = useState(false);
   const [shadowBan, getShadowBan] = useState(null);
   const uuid = uuidv4();
 
   const responseFacebook = (response) => {
     if (response.status != "unknown") {
       setIsLoggedIn(true);
-      response.hashtag = true;
       getUsers(response.accessToken);
-      console.log(response.accessToken);
     }
   };
 
   async function getUsers(accessToken) {
     const userData = await postAcessToken(accessToken);
-    localStorage.setItem("response", JSON.stringify(userData));
-    console.log("resultado:",userData);
-    getUser(userData)
-  };
+    if (userData.result.message === "Perfil sem shadowban!") {
+      setStep(1);
+      getShadowBan(false);
+    }
+  }
 
-  useEffect(()=>{
-    setStep(3);
-  },[user])
-
+  console.log("Usuário", user);
 
   return (
     <div className="App">
@@ -53,7 +49,7 @@ export default function App() {
               <EtapasAnalise
                 id={uuid}
                 title="Verificando se o perfil existe"
-                sniper={step >= 1}
+                sniper={step >= 3}
               />
               <EtapasAnalise
                 id={uuid}
@@ -63,9 +59,9 @@ export default function App() {
               <EtapasAnalise
                 id={uuid}
                 title="Analisando Shadowban..."
-                sniper={step >= 3}
+                sniper={step >= 1}
               />
-              {!shadowBan === true ? <ShadowBanTrue /> : <ShadowBanFalse />}
+              {/* {shadowBan === true ? <ShadowBanTrue /> : <ShadowBanFalse />} */}
             </s.containerEtapa>
           </s.containerLogin>
         </s.containerHome>
