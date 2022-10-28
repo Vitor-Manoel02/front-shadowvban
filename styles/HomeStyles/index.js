@@ -42,11 +42,16 @@ export const containerEtapa = styled.div`
   border: solid 1px #ffff;
   display: flex;
   flex-direction: column;
+
 `;
 
 export const containerResponse = styled.div`
   width: 100%;
   height: 40px;
   font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
 `;
 //mudar a cor de um icone do react-icons

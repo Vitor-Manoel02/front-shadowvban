@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 // import postAcessToken from "../../src/api/accessUsers";
 import NotLogged from "../../src/components/notLogged";
 import EtapasAnalise from "../../src/components/etapasAnalise";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { BsCheck2All } from "react-icons/bs";
-
+import ShadowBanTrue from "../../src/components/shadowBanTrue";
+import ShadowBanFalse from "../../src/components/shadowBanFalse";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, getUser] = useState([]);
-  const [step,setStep] = useState(0);
-  const [finaly, setFinaly] = useState(false)
+  const [step, setStep] = useState(0);
+  const [finaly, setFinaly] = useState(false);
   const uuid = uuidv4();
 
   const responseFacebook = (response) => {
@@ -23,24 +24,23 @@ export default function App() {
     }
   };
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      if(user.name){
+  useEffect(() => {
+    setTimeout(() => {
+      if (user.name) {
         setStep(1);
-        setTimeout(()=>{
-          if(user.hashtag){
+        setTimeout(() => {
+          if (user.hashtag) {
             setStep(2);
-            setTimeout(()=>{
+            setTimeout(() => {
               setStep(3);
               setFinaly(true);
-              user.shadowBan = true;
-              
-            },[2000])
+              user.shadowBan = false;
+            }, [2000]);
           }
-        },[2000])
+        }, [2000]);
       }
-    },[2000])
-  },[user])
+    }, [2000]);
+  }, [user]);
 
   // async function getUser(accessToken) {
   //   const userData = await postAcessToken(accessToken);
@@ -62,13 +62,11 @@ export default function App() {
           <s.containerLogin>
             <h1>Analisando sua conta</h1>
             <figcaption>Isso pode demorar alguns segundos...</figcaption>
-            {
-              finaly === false ? (
-                <s.loader />
-              ):(
-                <BsCheck2All fill="#09b109" />
-              )
-            }
+            {finaly === false ? (
+              <s.loader />
+            ) : (
+              <BsCheck2All fill="#09b109" size={36} />
+            )}
             <s.containerEtapa>
               <EtapasAnalise
                 id={uuid}
@@ -85,18 +83,7 @@ export default function App() {
                 title="Analisando Shadowban..."
                 sniper={step >= 3}
               />
-              <s.containerResponse>
-                {
-                  user.shadowBan === true ? (
-                    <>
-                    <h1>Sua conta está com Shadowban!</h1>
-                    <p>&#129298</p>
-                    </>
-                  ):(
-                    <></>
-                  )
-                }
-              </s.containerResponse>
+              {user.shadowBan === true ? <ShadowBanTrue /> : <ShadowBanFalse />}
             </s.containerEtapa>
           </s.containerLogin>
         </s.containerHome>
