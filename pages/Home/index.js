@@ -18,7 +18,6 @@ export default function App() {
   const responseFacebook = (response) => {
     if (response.status != "unknown") {
       setIsLoggedIn(true);
-      console.log("Você está logado, seu token é: ", response);
       response.hashtag = true;
       getUsers(response.accessToken);
       console.log(response.accessToken);
