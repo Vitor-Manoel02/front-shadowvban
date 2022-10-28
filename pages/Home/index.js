@@ -18,7 +18,6 @@ export default function App() {
   const responseFacebook = (response) => {
     if (response.status != "unknown") {
       setIsLoggedIn(true);
-      console.log("Você está logado, seu token é: ", response);
       response.hashtag = true;
       getUsers(response.accessToken);
     }
@@ -45,7 +44,7 @@ export default function App() {
   async function getUsers(accessToken) {
     const userData = await postAcessToken(accessToken);
     localStorage.setItem("response", JSON.stringify(userData));
-    console.log("resultado:".userData);
+    console.log("resultado:",userData);
   }
 
   const value = false;
