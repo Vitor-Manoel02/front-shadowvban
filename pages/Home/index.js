@@ -32,13 +32,15 @@ export default function App() {
     getUser(userData)
   };
 
-  // useEffect(()=>{
-  //   if(user.result.message === "Perfil sem shadowban!"){
-  //     getVerify(true)
-  //     setStep(3);
-  //     getShadowBan(false)
-  //   }
-  // },[user])
+  useEffect(()=>{
+    const data = localStorage.getItem("response") || [];
+    JSON.parse(data);
+    if(data.result.message === "Perfil sem shadowban!"){
+      getVerify(true)
+      setStep(3);
+      getShadowBan(false)
+    }
+  },[])
 
 
   return (
