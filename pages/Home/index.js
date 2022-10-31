@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import ShadowBanVerify from "../../src/api/ShadowBanVerify";
 import searchHashtag from "../../src/api/searchHashtag";
 import perfilVerify from "../../src/api/perfilVerify";
-import NotLogged from "../../src/components/notLogged";
+import ButtonLogin from "../../src/components/buttonLogin";
 import EtapasAnalise from "../../src/components/etapasAnalise";
 import { v4 as uuidv4 } from "uuid";
 import { BsCheck2All } from "react-icons/bs";
 import ShadowBanTrue from "../../src/components/shadowBanTrue";
 import ShadowBanFalse from "../../src/components/shadowBanFalse";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,7 +18,10 @@ export default function App() {
   const [verify, getVerify] = useState(false);
   const [shadowBan, getShadowBan] = useState();
   const [showResult, setShowResult] = useState(false);
-  const uuid = uuidv4();
+  const [messageErrorPerfil, setMessageErrorPerfil] = useState();
+  const [messageErrorHashtag, setMessageErrorHashtag] = useState();
+  const [messageErrorShadowBan, setMessageErrorShadowBan] = useState();
+  const [error, setError] = useState(0);
 
   const responseFacebook = (response) => {
     if (response.status != "unknown") {
@@ -41,8 +45,20 @@ export default function App() {
           setStep(3);
           getShadowBan(false);
           setShowResult(true);
+        }else{
+          setMessageErrorShadowBan(ShadowBan.result.message);
+          getShadowBan(true);
+          setShowResult(true);
         }
+      }else{
+        setShowResult(false)
+        setError(-1);
+        setMessageErrorHashtag(searchHashtags.result.message);
       }
+    } else {
+      setShowResult(false);
+      setError(-1);
+      setMessageErrorPerfil(perfil.result.response.data.message);
     }
   }
 
@@ -56,27 +72,44 @@ export default function App() {
             <h1>Analisando sua conta</h1>
             <figcaption>Isso pode demorar alguns segundos...</figcaption>
             {showResult === false ? (
-              <s.loader />
+              step < 0 ? (
+                <AiOutlineCloseCircle fill="#ff0000" size={36} />
+              ) : (
+                <s.loader />
+              )
             ) : (
-              <BsCheck2All fill="#09b109" size={36} />
+              <BsCheck2All size={100} color="#00ff00" />
             )}
             <s.containerEtapa>
-              <EtapasAnalise
-                id={uuid}
-                title="Verificando se o perfil existe"
-                sniper={step >= 1}
-              />
-              <EtapasAnalise
-                id={uuid}
-                title="Buscando foto mais recente ultilizando hashtag"
-                sniper={step >= 2}
-              />
-              <EtapasAnalise
-                id={uuid}
-                title="Analisando Shadowban..."
-                sniper={step >= 3}
-              />
-              {showResult === true ? (
+            {
+              step <= 1 ? (
+                <EtapasAnalise
+                  title="Verificando perfil"
+                  sniper={step === 1 ? true : false}
+                  messageError={messageErrorPerfil}
+                  messageTrue="Perfil verificado com sucesso!"
+                  error={error}
+                />
+              ) : step <= 2 ? (
+                <EtapasAnalise
+                  title="Verificando hashtag" 
+                  sniper={step === 2 ? true : false}
+                  messageError={messageErrorHashtag}
+                  messageTrue="Hashtag verificada com sucesso!"
+                  error={error}
+                />
+              ) : step <= 3 ? (
+                <EtapasAnalise
+                  title="Verificando shadowban"
+                  sniper={step === 3 ? true : false}
+                  messageError={messageErrorShadowBan}
+                  messageTrue="Shadowban verificado com sucesso!"
+                  error={error}
+                />
+              )
+              : null
+            }
+            {showResult === true ? (
                 shadowBan === true ? (
                   <ShadowBanTrue />
                 ) : (
@@ -91,7 +124,7 @@ export default function App() {
       ) : (
         <s.containerHome>
           <s.containerLogin>
-            <NotLogged responseFacebook={responseFacebook} />
+            <ButtonLogin responseFacebook={responseFacebook} />
           </s.containerLogin>
         </s.containerHome>
       )}

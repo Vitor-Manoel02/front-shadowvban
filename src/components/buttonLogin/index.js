@@ -1,6 +1,6 @@
 import FacebookLogin from 'react-facebook-login';
 
-export default function NotLogged({responseFacebook}) {
+export default function ButtonLogin({responseFacebook}) {
     return(
         <>
         <h1>Minhas conta está com shadowban?</h1>

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function ShadowBanVerify(Token){
     try{
-        const { data } = await axios.get("https://ac5b-200-9-19-174.sa.ngrok.io/shadowbanverification", {
+        const { data } = await axios.get("http://localhost:4000/shadowbanverification", {
           headers: {
             token: Token,
             "ngrok-skip-browser-warning": 1
@@ -16,7 +16,7 @@ export default async function ShadowBanVerify(Token){
     }catch(error){
         return{
             success: false,
-            message: "Erro ao acessar a API",
+            message: error.response.message,
             result: error
         }
     }

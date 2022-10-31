@@ -8,8 +8,8 @@ export const containerLoader = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid #ffff;
-  gap: 1rem;
+  border: 2px solid #e6e6e6;
+  gap: 2rem;
 `;
 
 export const loader = styled.div`
