@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #191C2B;
+    background-color: #ffffff;
 }
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 
@@ -20,14 +20,14 @@ a {
   font-family: 'Oswald', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
     color: white;
   }
-}
+} */
 
 @keyframes is-rotating {
   to {

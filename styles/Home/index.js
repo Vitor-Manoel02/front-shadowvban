@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const containerHome = styled.div`
-  width: 100vw ;
   height: 100vh ;
   background-color: white;
   display: flex ;
@@ -27,9 +26,34 @@ export const containerLogin = styled.div`
   }
   button:hover {
     background-color: #191c2b ;
-    cursor: pointer;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
 `;
+
+// export const containerLogin = styled.div`
+//   width: 60%;
+//   height: auto;
+//   padding: 20px;
+//   background-color: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   border: 2px solid #e6e6e6;
+//   /* gap: 1rem; */
+//   button {
+//     border-radius: 20px;
+//   }
+//   button:hover {
+//     background-color: #191c2b;
+//     cursor: pointer;
+//   }
+// `;
 
 export const loader = styled.div`
   animation: is-rotating 1s infinite;

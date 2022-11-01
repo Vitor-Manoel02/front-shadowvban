@@ -16,7 +16,7 @@ export default async function searchHashtag(Token){
     }catch(error){
         return{
             success: false,
-            message: "Erro ao acessar a API",
+            message: error.response.message,
             result: error
         }
     }

@@ -19,6 +19,7 @@ export default function App() {
   const [verify, getVerify] = useState(false);
   const [shadowBan, getShadowBan] = useState();
   const [showResult, setShowResult] = useState(false);
+
   const [message, setMessage] = useState("");
   const [messageErrorPerfil, setMessageErrorPerfil] = useState("");
   const [messageErrorHashtag, setMessageErrorHashtag] = useState("");
@@ -53,7 +54,10 @@ export default function App() {
           getShadowBan(false);
           setShowResult(true);
         }else{
+
           setMessageErrorShadowBan(ShadowBan.result.response.data.message);
+
+
           getShadowBan(true);
           setShowResult(true);
         }
@@ -61,13 +65,14 @@ export default function App() {
         setShowResult(false)
         setError(-1);
         setMessageErrorHashtag(searchHashtags.result.response.data.message);
+
       }
     } else {
       setShowResult(false);
       setError(-1);
       setMessageErrorPerfil(perfil.result.response.data.message);
     }
-  }
+}
 
   console.log("Usuário", user);
 
@@ -99,11 +104,11 @@ export default function App() {
               showResult && <EtapasAnalise step={step} title={message} sniper={step >= 3} error={error} messageError={messageErrorShadowBan} messageSearch="Verificando ShadowBan..." />
             }
             {showResult === true ? (
-              shadowBan === true ? (
-                <ShadowBanTrue />
-              ) : (
-                <ShadowBanFalse />
-              )
+                shadowBan === true ? (
+                  <ShadowBanTrue />
+                ) : (
+                  <ShadowBanFalse />
+                )
             ) : (
               <s.containerResult></s.containerResult>
             )}
