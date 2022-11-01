@@ -1,28 +1,32 @@
 import styled from "styled-components";
 
 export const containerHome = styled.div`
-  width: 100vw !important;
-  height: 100vh !important;
-  background-color: #191c2b;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  width: 100vw ;
+  height: 100vh ;
+  background-color: white;
+  display: flex ;
+  justify-content: center ;
+  align-items: center ;
+  flex-direction: column;
 `;
 
 export const containerLogin = styled.div`
-  width: 60% !important;
-  height: 70% !important;
-  background-color: #191c2b;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex-direction: column !important;
+  width: 60% ;
+  height: 70% ;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: white;
+  border: 2px solid gray;
+  display: flex ;
+  justify-content: center ;
+  align-items: center ;
+  flex-direction: column ;
   gap: 1rem;
   button {
-    border-radius: 20px !important;
+    border-radius: 20px ;
   }
   button:hover {
-    background-color: #191c2b !important;
+    background-color: #191c2b ;
     cursor: pointer;
   }
 `;
@@ -37,13 +41,13 @@ export const loader = styled.div`
 `;
 
 export const containerEtapa = styled.div`
-  width: 100% !important;
+  width: 60%;
   height: auto;
   border: solid 1px #ffff;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-
+  gap: 1rem;
 `;
 
 export const containerResponse = styled.div`

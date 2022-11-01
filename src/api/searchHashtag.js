@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function searchHashtag(Token){
     try{
-        const { data } = await axios.get("https://ac5b-200-9-19-174.sa.ngrok.io/hashtagverification", {
+        const { data } = await axios.get("http://localhost:4000/hashtagverification", {
           headers: {
             token: Token,
             "ngrok-skip-browser-warning": 1
