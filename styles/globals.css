@@ -1,37 +1,64 @@
+* {
+  margin: 0;
+  padding: 0 auto;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+  overflow: hidden;
+  
+}
 html,
 body {
-  padding: 0;
+  padding: 0 auto;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #ffffff;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
 }
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-  margin: 0;
-  padding: 0 auto;
-  box-sizing: border-box;
-  font-family: 'Oswald', sans-serif;
+:root {
+  --color-font-dark: #eeeeee;
+  --color-font-light: rgba(83, 83, 83, 0.959);
+  --color-background-dark: #1e1e1e;
+  --color-background-lighter: #f5f5f5;
+  --border-light: 2px solid gray;
+  --border-dark: 2px solid white;
+  --border-radius: 5px;
+  --shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  --shadow-light: 0 0 10px rgba(0, 0, 0, 0.2);
+  --shadow-dark: 0 0 10px rgba(0, 0, 0, 0.8);
+  --transition: all 0.3s ease-in-out;
+  --spacing: 0.5rem;
+  --spacing-sm: 0.25rem;
+  --spacing-lg: 0.75rem;
+  --spacing-xl: 1rem;
+  --spacing-xxl: 2rem;
+  --spacing-xxxl: 3rem;
+  --max-width: 1170px;
+  --fixed-width: 620px;
+  --font-main: font-family: 'Roboto', sans-serif;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-  body {
-    color: white;
+  h1,figcaption,h2,h3,h4,p {
+    color: var(--color-font-dark);
   }
-} */
+  div{
+    background-color:  var(--color-background-dark);
+    border: var(--border-dark);
+  }
+}
 
 @keyframes is-rotating {
   to {
     transform: rotate(1turn);
   }
 }
-

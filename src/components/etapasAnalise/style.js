@@ -8,7 +8,8 @@ export const containerLoader = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 2px solid gray;
+  border: var(--border-light);
+  border-radius: var(--border-radius);
   gap: 2rem;
 `;
 
