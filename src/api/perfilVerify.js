@@ -16,7 +16,7 @@ export default async function perfilVerify(Token){
     }catch(error){
         return{
             success: false,
-            message: error.response.data.message,
+            message: error.response.message,
             result: error
         }
     }

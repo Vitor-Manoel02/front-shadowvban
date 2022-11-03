@@ -8,6 +8,7 @@ import { BsCheck2All } from "react-icons/bs";
 import ShadowBanFalse from "../shadowBanFalse/index.js";
 import ShadowBanTrue from "../shadowBanTrue/index.js";
 import { AiOutlineClose } from "react-icons/ai";
+import searchHashtag from "../../api/searchHashtag.js";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Verifica se o usuário está logado
@@ -21,6 +22,7 @@ export default function Home() {
   const [showProfile, setShowProfile] = useState(true); // mostrar o perfil
   const [error, setError] = useState(0); // gera erro caso uma das etapas falhe
   const [showHashtag, setShowAHashtag] = useState(false); // mostrar se  a etaapa de hashtag foi concluida
+  const [showShadowBan, setShowShadowBan] = useState(false); // mostrar se a etapa de shadowban foi concluida
 
   const responseFacebook = (response) => {
     // responseFacebook, pakote que chama a função de login do facebook
@@ -39,20 +41,20 @@ export default function Home() {
     ) {
       // se a conexão com o facebook e instagram for realizada, então o usuário tem os requisitos para fazer a verificação
       setStep(1);
+      setShowAHashtag(true);
       const searchHashtags = await searchHashtag(accessToken);
       if (searchHashtags.result.message === "Critérios de análise atendidos!") {
         // se a conexão com o facebook e instagram for realizada, então o usuário tem os requisitos para fazer a verificação(foto com hashtag)
-        setShowAHashtag(true);
         setStep(2);
+        setShowShadowBan(true);
         const ShadowBan = await ShadowBanVerify(accessToken);
         if (ShadowBan.result.message === "Perfil sem shadowban!") {
           //se for encontrado que o perfil não tem shadowban, então o usuário pode prosseguir com a verificação
-          setStep(3);
           getShadowBan(false);
+          setStep(3);
           setShowResult(true);
         } else { // se o perfil tiver shadowban, então o usuário não pode prosseguir com a verificação
           setMessageErrorShadowBan(ShadowBan.result.response.data.message);
-
           getShadowBan(true);
           setShowResult(true);
         }
@@ -105,7 +107,7 @@ export default function Home() {
           />
         )}
         {/*verificando se o perfil está shadowban*/}
-        {showResult && (
+        { showShadowBan && (
           <EtapasAnalise
             step={step}
             title="Verificado com sucesso!"

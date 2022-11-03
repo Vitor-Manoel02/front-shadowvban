@@ -9,7 +9,7 @@ export default function ButtonLogin({responseFacebook}) {
               conta do Shadowban.
             </h2>
             <FacebookLogin
-             appId="1147465239309646"
+             appId="812880569961304"
              autoLoad={true}
              fields="name,email,picture"
              callback={responseFacebook}

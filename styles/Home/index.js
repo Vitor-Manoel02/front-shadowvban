@@ -23,9 +23,7 @@ export const header = styled.div`
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--spacing-lg);
-  background-color: var(--color-background-lighter);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
 `;
 
 
@@ -44,14 +42,10 @@ export const containerLogin = styled.div`
   button {
     border-radius: var(--border-radius);
   }
-  button:hover {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: var(--transition);
+  button:hover{
+    cursor: pointer;
   }
+
 `;
 
 // export const containerLogin = styled.div`

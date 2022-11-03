@@ -44,7 +44,7 @@ a {
   --font-main: font-family: 'Roboto', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -55,7 +55,7 @@ a {
     background-color:  var(--color-background-dark);
     border: var(--border-dark);
   }
-}
+} */
 
 @keyframes is-rotating {
   to {
