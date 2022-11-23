@@ -53,10 +53,12 @@ export default function Home() {
           getShadowBan(false);
           setStep(3);
           setShowResult(true);
+          setShowShadowBan(true)
         } else { // se o perfil tiver shadowban, então o usuário não pode prosseguir com a verificação
-          setMessageErrorShadowBan(ShadowBan.result.response.data.message);
-          getShadowBan(true);
-          setShowResult(true);
+          setStep(3);
+          getShadowBan(true); // se o perfil tiver shadowban, então o usuário não pode prosseguir com a verificação
+          setShowResult(true); // mostra o resultado da verificação
+          setShowShadowBan(true) // mostra que a etapa de shadowban foi concluida
         }
       } else { // se a conexão com o facebook e instagram não for realizada, então o usuário não tem os requisitos para fazer a verificação(foto com hashtag)
         setShowResult(false);

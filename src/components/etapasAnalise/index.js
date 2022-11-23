@@ -2,7 +2,7 @@ import * as s from "./style";
 import { BsCheck2All } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function EtapasAnalise({ title, sniper, error, messageError, messageSearch, etapaFalse, pending, etapaTrue }) {
+export default function EtapasAnalise({ title, sniper, error, messageError, messageSearch}) {
 
   return (
     <s.containerLoader>
