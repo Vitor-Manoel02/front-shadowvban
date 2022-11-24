@@ -10,7 +10,7 @@ export default function ButtonLogin({responseFacebook}) {
             </h2>
             <FacebookLogin
              appId="1345343732937096"
-             autoLoad={true}
+             autoLoad={false}
              fields="name,email,picture"
              callback={responseFacebook}
             //  version="v15.0"
