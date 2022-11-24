@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function ShadowBanVerify(Token){
     try{
-        const { data } = await axios.get("http://localhost:4000/shadowbanverification", {
+        const { data } = await axios.get("https://back-shadow.herokuapp.com/shadowbanverification", {
           headers: {
             token: Token,
             "ngrok-skip-browser-warning": 1
