@@ -4,8 +4,7 @@ export default async function perfilVerify(Token){
     try{
         const { data } = await axios.get("https://back-shadow.herokuapp.com/pageandprofileverification", {
           headers: {
-            token: Token,
-            "ngrok-skip-browser-warning": 1
+            token: Token
           }
         });
         return {
