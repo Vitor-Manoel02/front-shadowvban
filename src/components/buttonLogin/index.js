@@ -15,7 +15,7 @@ export default function ButtonLogin({responseFacebook}) {
              callback={responseFacebook}
             //  version="v15.0"
             />
-            <div>
+  
               <h3>Como usar:</h3>
               <ol>
                 <li>Faça login com sua conta empresarial do instagram.</li>
@@ -25,7 +25,6 @@ export default function ButtonLogin({responseFacebook}) {
                 <li>Verificamos se o perfil existe e atende aos requisitos.</li>
                 <li>Agora é só descobrir se você está com Shadowban ou não.</li>
               </ol>
-            </div>
         </>
         
     )

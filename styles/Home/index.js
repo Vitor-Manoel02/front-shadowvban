@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const containerHome = styled.div`
   height: 100vh;
   width: 100vw;
-  margin-top: 100px;
+  margin-top: 50px;
   padding: var(--spacing-lg);
   background-color: var(--color-background-light);
   display: flex;
@@ -16,7 +16,7 @@ export const containerHome = styled.div`
 
 export const header = styled.div`
   width: 80%;
-  height: auto;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,24 +28,11 @@ export const header = styled.div`
 
 
 export const containerLogin = styled.div`
-  width: 60%;
-  height: 70%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: var(--color-background-light);
-  border: var(--boder-light);
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 1rem;
-  button {
-    border-radius: var(--border-radius);
-  }
-  button:hover{
-    cursor: pointer;
-  }
-
 `;
 
 // export const containerLogin = styled.div`
