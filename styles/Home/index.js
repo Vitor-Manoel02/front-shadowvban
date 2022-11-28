@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const containerHome = styled.div`
   height: 100vh;
   width: 100vw;
-  margin-top: 50px;
   padding: var(--spacing-lg);
   background-color: var(--color-background-light);
   display: flex;
@@ -33,6 +32,7 @@ export const containerLogin = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: var( --spacing-lg);
 `;
 
 // export const containerLogin = styled.div`
