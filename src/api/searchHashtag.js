@@ -3,7 +3,7 @@ import axios from "axios";
 export default async function searchHashtag(Token) {
   try {
     const { data } = await axios.get(
-      "https://back-shadow.herokuapp.com/hashtagverification",
+      "https://backend.shadowban.com.br/hashtagverification",
       {
         headers: {
           token: Token,

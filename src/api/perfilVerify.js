@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function perfilVerify(Token){
     try{
-        const { data } = await axios.get("https://back-shadow.herokuapp.com/pageandprofileverification", {
+        const { data } = await axios.get("https://backend.shadowban.com.br/pageandprofileverification", {
           headers: {
             token: Token
           }

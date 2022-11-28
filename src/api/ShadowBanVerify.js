@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function ShadowBanVerify(Token){
     try{
-        const { data } = await axios.get("https://back-shadow.herokuapp.com/shadowbanverification", {
+        const { data } = await axios.get("https://backend.shadowban.com.br/shadowbanverification", {
           headers: {
             token: Token
           }

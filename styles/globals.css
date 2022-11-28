@@ -42,6 +42,7 @@ a {
   --max-width: 1170px;
   --fixed-width: 620px;
   --font-main: font-family: 'Roboto', sans-serif;
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* @media (prefers-color-scheme: dark) {

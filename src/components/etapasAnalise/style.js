@@ -11,6 +11,7 @@ export const containerLoader = styled.div`
   border: var(--border-light);
   border-radius: var(--border-radius);
   gap: 2rem;
+  box-shadow:  var(--box-shadow);
 `;
 
 export const loader = styled.div`
